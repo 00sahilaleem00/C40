@@ -86,12 +86,22 @@ class Game {
 
     }
 
-    if(keyIsDown(UP_ARROW) && player.index !== null){
-      player.distance +=10
+    if(keyIsDown(UP_ARROW) && player.index !== null && player.distance <= 4000){
+      player.distance +=10;
       player.update();
     }
+    
 
-    if(player.distance > 3860){
+    if(player.distance > 4000 && player.end == false){
+      player.end = true;
+      playerRank++;
+      player.rank = playerRank;
+      //gameState = 2;
+      player.updateRank(playerRank);
+    }
+
+    player.getCount();
+    if(playerRank == 4){
       gameState = 2;
     }
    
@@ -99,6 +109,8 @@ class Game {
   }
 
   end(){
-    console.log("Game Ended");
+    var rankElement = createElement('h2');
+    rankElement.html("Rank: "+player.rank);
+    rankElement.position(displayWidth/2, displayHeight/2);
   }
 }

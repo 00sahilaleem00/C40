@@ -5,6 +5,7 @@ var playerCount;
 var allPlayers;
 var distance = 0;
 var database;
+var playerRank = 0;
 
 var form, player, game;
 
@@ -31,6 +32,7 @@ function setup(){
 
 
 function draw(){
+
   if(playerCount === 4){
     game.update(1);
   }
